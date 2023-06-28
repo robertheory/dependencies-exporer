@@ -1,11 +1,8 @@
+import Searchbar from '@/components/Searchbar';
 import React from 'react';
 
 const Home = async () => {
-  return (
-    <div>
-      <h1>home</h1>
-    </div>
-  );
+  return <Searchbar />;
 };
 
 export default Home;

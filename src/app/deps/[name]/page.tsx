@@ -131,17 +131,35 @@ const Deps = async ({
 
   return (
     <div className='w-[100vw] h-[100vh]'>
-      <h1>
-        Deps Of {packageData.name}@{packageData.version}
-      </h1>
+      <div className='flex flex-row justify-start items-center p-4 gap-2'>
+        <h1 className='text-2xl'>
+          Deps Of {packageData.name}@{packageData.version}
+        </h1>
+
+        <div className='flex flex-row gap-4'>
+          {includeDevDependencies ? (
+            <a
+              href={`/deps/${name}?includeDev=false`}
+              className='bg-zinc-600 text-white px-4 py-2 rounded-md hover:bg-zinc-500'
+            >
+              Only Prod Dependencies
+            </a>
+          ) : (
+            <a
+              href={`/deps/${name}?includeDev=true`}
+              className='bg-zinc-600 text-white px-4 py-2 rounded-md hover:bg-zinc-500'
+            >
+              Include Dev Dependencies
+            </a>
+          )}
+        </div>
+
+        <h1 className='bg-zinc-600 text-white px-4 py-2 rounded-md hover:bg-zinc-500 w-fit'>
+          <a href='/'>Home</a>
+        </h1>
+      </div>
 
       <TreeChart library={packageData.name} dependencies={allData} />
-
-      {/* <ul>
-        {packageData.dependencies.map((dep) => (
-          <li key={dep.name}>{dep.name}</li>
-        ))}
-      </ul> */}
     </div>
   );
 };
